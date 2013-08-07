@@ -18,11 +18,23 @@ def get_gif():
     response = requests.get(res_url)
 
     json_response = json.loads(response.text)
+    # TODO make random
 
     return json_response['response'][0]['photos'][0]['original_size']['url']
 
 
+def process_data(afzals):
+	pass
+
+
+def send_gif(url):
+	pass
+
+
 def main():
+	# Declare stream
+	# For data in stream
+	     # process_data(data)
     print get_gif()
 
 
