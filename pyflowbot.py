@@ -6,26 +6,16 @@ import json
 
 from flowdock import JSONStream
 
-
 config = ConfigParser.ConfigParser()
 config.read('apikey.cfg')
 
-API_KEY = config.get('DEFAULT', 'API_KEY')
 FLOW_API_KEY = config.get('DEFAULT', 'FLOW_API_KEY')
-TUMBLR_URL = 'http://api.tumblr.com/v2/'
 
+CAT_URL = "http://thecatapi.com/api/images/get?format=src&type=gif"
 
 def get_gif():
-    params = [('tag', 'gif'), ('api_key', API_KEY)]
-    res_url = "{}tagged/?{}".format(TUMBLR_URL, urllib.urlencode(params))
-
-    response = requests.get(res_url)
-
-    json_response = json.loads(response.text)
-    # TODO make random
-
-    return json_response['response'][0]['photos'][0]['original_size']['url']
-
+    gif_url = requests.get(url)
+    return gif_url.url
 
 def process_data(data):
     print data["content"]
