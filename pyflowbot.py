@@ -2,9 +2,7 @@ import flowdock
 import ConfigParser
 import requests
 
-from flowdock import JSONStream
-
-from flowdock import Chat
+from flowdock import JSONStream, Chat
 
 
 config = ConfigParser.ConfigParser()
@@ -30,8 +28,7 @@ def process_data(data):
 
 def send_gif(gif_url):
    chat = Chat(FLOW_TOKEN)
-   chat.post(CAT_URL , 'PyFlowBot')
-   pass
+   chat.post(gif_url, 'PyFlowBot')
 
 
 def main():
