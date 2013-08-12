@@ -6,26 +6,34 @@ import json
 
 from flowdock import JSONStream
 
+from flowdock import Chat
+
+
 config = ConfigParser.ConfigParser()
 config.read('apikey.cfg')
 
 FLOW_API_KEY = config.get('DEFAULT', 'FLOW_API_KEY')
+FLOW_TOKEN = config.get('DEFAULT' , 'FLOW_TOKEN' )
 
 CAT_URL = "http://thecatapi.com/api/images/get?format=src&type=gif"
 
 def get_gif():
-    gif_url = requests.get(url)
+    gif_url = requests.get(cat_url)
     return gif_url.url
+    #print gif_url
 
 def process_data(data):
-    print data["content"]
-    # TODO match keyword
+    matching_word = "should"
+    data_of_flow = data["content"]
+    #print data_of_flow.find("should")
+    if data_of_flow.find("should") != -1:
+        send_gif(CAT_URL)
 
 
-def send_gif(url):
+def send_gif(CAT_URL):
+    chat = Chat(FLOW_TOKEN)
+    chat.post(CAT_URL , 'Raymond')
     pass
-    # TODO impersonate you
-    # and send back
 
 def main():
     stream = JSONStream(FLOW_API_KEY)
