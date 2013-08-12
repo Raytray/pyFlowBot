@@ -14,7 +14,7 @@ FLOW_API_KEY = config.get('DEFAULT', 'FLOW_API_KEY')
 CAT_URL = "http://thecatapi.com/api/images/get?format=src&type=gif"
 
 def get_gif():
-    gif_url = requests.get(url)
+    gif_url = requests.get(CAT_URL)
     return gif_url.url
 
 def process_data(data):
